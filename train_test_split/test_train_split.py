@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import numpy as np
-def test_train_split(array, test_size):
+def test_train_split(array, test_size,y=-1):
     #Assuming the target is the last column
     num_classes = np.unique(array[:,-1], return_counts=True)[0].shape
     unique_vals = np.unique(array[:,-1], return_counts=True)[0]
@@ -8,12 +8,12 @@ def test_train_split(array, test_size):
 
     subclasses = []
     for i in unique_vals:
-        subclasses.append(array[array[:,-1] == i])
+        subclasses.append(array[array[:,y] == i])
     train_ = []
     test_ = []
     
     for i in unique_vals:
-        temp = array[array[:,-1] == i]
+        temp = array[array[:,y] == i]
         train_size = int(np.floor(test_size*temp.shape[0]))
         test_s = temp.shape[0] - train_size
         
