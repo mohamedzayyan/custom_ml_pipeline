@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 import numpy as np
 def test_train_split(array, test_size,y=-1):
-    #Assuming the target is the last column
-    num_classes = np.unique(array[:,-1], return_counts=True)[0].shape
-    unique_vals = np.unique(array[:,-1], return_counts=True)[0]
+    num_classes = np.unique(array[:,y], return_counts=True)[0].shape
+    unique_vals = np.unique(array[:,y], return_counts=True)[0]
     num_rows, num_cols = array.shape[0], array.shape[1]
 
     subclasses = []
